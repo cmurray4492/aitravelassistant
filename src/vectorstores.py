@@ -9,6 +9,7 @@ def get_qdrant_client():
         api_key=QDRANT_API_KEY
     )
 
+
 def init_qdrant():
     # Connect to Qdrant Cloud or local
     client = get_qdrant_client()
@@ -21,7 +22,5 @@ def init_qdrant():
             collection_name=COLLECTION_NAME,
             vectors_config=VectorParams(size=384, distance=Distance.COSINE),
         )
-    
+
     return client
-
-

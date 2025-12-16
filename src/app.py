@@ -8,12 +8,12 @@ from config import FASTAPI_URL
 # FASTAPI_URL = "http://localhost:8000"
 
 st.title("🧭 AI Travel Itinerary Assistant")
-st.markdown("Ask about any travel destination - we'll find the best suggestions for you!")
+st.markdown("Ask about a travel destination - we'll find suggestions!")
 
 # Sidebar for File Upload
 with st.sidebar:
     st.subheader("📁 Upload Travel Guide")
-    uploaded_file = st.file_uploader("Upload a PDF travel guide (optional)", type="pdf")
+    uploaded_file = st.file_uploader("Upload a PDF travel guide", type="pdf")
 
     if uploaded_file:
         if st.button("Process Guide"):
@@ -30,7 +30,7 @@ with st.sidebar:
 
 # Main content
 st.subheader("❓ Ask Your Question")
-query = st.text_input("Enter your travel question (e.g., Best places to visit in Paris):")
+query = st.text_input("Enter a travel question: ):")
 
 if st.button("Ask"):
     if query.strip():

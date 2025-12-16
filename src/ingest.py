@@ -6,16 +6,17 @@ from src.config import COLLECTION_NAME
 from src.embeddings import get_embeddings
 from src.vectorstores import get_qdrant_client
 
+
 async def ingest_pdf(file: UploadFile):
     print(f"📄 Processing PDF file: {file.filename}")
     content = await file.read()
-    
+
     # Load PDF directly from memory
     docs = []
     pdf = fitz.open(stream=content, filetype="pdf")
     page_count = len(pdf)
     print(f"📑 PDF loaded successfully. Found {page_count} pages")
-    
+
     try:
         for page_num in range(page_count):
             page = pdf[page_num]
@@ -26,7 +27,7 @@ async def ingest_pdf(file: UploadFile):
             ))
     finally:
         pdf.close()
-    
+
     print("✂️ Splitting document into chunks...")
     splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     chunks = splitter.split_documents(docs)

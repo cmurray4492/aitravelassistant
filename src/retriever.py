@@ -2,6 +2,7 @@ from src.embeddings import get_embeddings
 from src.config import COLLECTION_NAME
 from src.vectorstores import get_qdrant_client
 
+
 def retrieve_docs(query: str, top_k=5):
     # Get the Qdrant client
     client = get_qdrant_client()
@@ -16,5 +17,3 @@ def retrieve_docs(query: str, top_k=5):
 
     print("Retriever module loaded successfully.")
     return [hit.payload["text"] for hit in search_result]
-    
-    
